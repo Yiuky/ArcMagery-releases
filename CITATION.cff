@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "Se usar o ArcMagery em um trabalho, cite-o assim. / If you use ArcMagery, please cite it as below."
+type: software
+title: "ArcMagery: imagens de satélite no ArcMap 10.8 e QGIS, direto no TOC e na resolução nativa"
+abstract: >-
+  Python Add-In for ArcGIS Desktop 10.8 (ArcMap) and QGIS Plugin that searches, clips and loads satellite imagery into the
+  table of contents at native resolution from Google Earth Engine, CBERS/Amazonia-1 (INPE), SPOT 1-5 (CNES,
+  co-registered to Esri World Imagery), Google Earth historical imagery, Esri Wayback and XYZ basemaps.
+authors:
+  - family-names: Gambati
+    given-names: Joberth Firmino
+version: 2.4.3
+date-released: 2026-10-07
+license: custom
+repository-code: "https://github.com/Yiuky/ArcMagery-releases"
+url: "https://github.com/Yiuky/ArcMagery-releases"
+keywords:
+  - ArcGIS
+  - ArcMap
+  - QGIS
+  - Google Earth Engine
+  - CBERS
+  - SPOT
+  - remote sensing
+  - satellite imagery

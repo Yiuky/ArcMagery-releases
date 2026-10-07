@@ -1,0 +1,30 @@
+TERMOS DE USO E LICENÇA DE DISTRIBUIÇÃO - ARCMAGERY
+
+Copyright (c) 2024-2026 Joberth Firmino Gambati. Todos os direitos reservados.
+
+É concedida permissão a qualquer pessoa que obtenha uma cópia deste software e arquivos
+de documentação associados (o "Software"), para utilizar e executar o Software para fins
+pessoais, educacionais, técnicos, institucionais e periciais, sob as seguintes condições:
+
+1. AVISO DE AUTORIA E ATRIBUIÇÃO OBRIGATÓRIA:
+   O aviso de copyright acima e este aviso de permissão deverão ser incluídos em todas
+   as cópias ou partes substanciais do Software.
+
+2. CLÁUSULA DE CITAÇÃO OBRIGATÓRIA:
+   Qualquer trabalho, artigo, laudo pericial, relatório técnico, publicação científica,
+   material didático ou produto cartográfico gerado total ou parcialmente com o auxílio
+   do ArcMagery ou QMagery DEVE OBRIGATORIAMENTE CITAR o ArcMagery e seu autor:
+   - Autor: Joberth Firmino Gambati
+   - Software: ArcMagery / QMagery
+   - Repositório: https://github.com/Yiuky/ArcMagery-releases
+   (Consulte o arquivo CITATION.cff para formatos padronizados BibTeX/APA/ABNT).
+
+3. RESTRIÇÕES DE REDISTRIBUIÇÃO E ENGENHARIA REVERSA:
+   É vedada a redistribuição comercial dos binários sem autorização prévia e expressa do autor.
+   O software é distribuído em formato binário compilado.
+
+O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA,
+INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UMA FINALIDADE
+ESPECÍFICA E NÃO VIOLAÇÃO. EM NENHUMA HIPÓTESE O AUTOR SERÁ RESPONSÁVEL POR QUALQUER
+RECLAMAÇÃO, DANO OU OUTRA RESPONSABILIDADE, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA
+FORMA, DECORRENTE DE OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS OPERAÇÕES NO SOFTWARE.
