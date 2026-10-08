@@ -1,27 +1,45 @@
-TERMOS DE USO E LICENÇA DE DISTRIBUIÇÃO - ARCMAGERY
+TERMOS DE USO E LICENÇA DE DISTRIBUIÇÃO - ARCMAGERY / QMAGERY
 
 Copyright (c) 2024-2026 Joberth Firmino Gambati. Todos os direitos reservados.
 
-É concedida permissão a qualquer pessoa que obtenha uma cópia deste software e arquivos
-de documentação associados (o "Software"), para utilizar e executar o Software para fins
+É concedida permissão a qualquer pessoa que obtenha uma cópia deste software e dos arquivos de
+documentação associados (o "Software") para INSTALAR e UTILIZAR o Software, sem custo, para fins
 pessoais, educacionais, técnicos, institucionais e periciais, sob as seguintes condições:
 
-1. AVISO DE AUTORIA E ATRIBUIÇÃO OBRIGATÓRIA:
-   O aviso de copyright acima e este aviso de permissão deverão ser incluídos em todas
-   as cópias ou partes substanciais do Software.
+1. AVISO DE AUTORIA:
+   O aviso de copyright acima e estes termos devem ser incluídos em todas as cópias do Software
+   que forem legitimamente repassadas (ver item 3).
 
-2. CLÁUSULA DE CITAÇÃO OBRIGATÓRIA:
-   Qualquer trabalho, artigo, laudo pericial, relatório técnico, publicação científica,
-   material didático ou produto cartográfico gerado total ou parcialmente com o auxílio
-   do ArcMagery ou QMagery DEVE OBRIGATORIAMENTE CITAR o ArcMagery e seu autor:
+2. CITAÇÃO OBRIGATÓRIA:
+   Qualquer trabalho, artigo, laudo pericial, relatório técnico, publicação científica, material
+   didático ou produto cartográfico gerado total ou parcialmente com o auxílio do ArcMagery ou do
+   QMagery DEVE CITAR o software e o seu autor:
    - Autor: Joberth Firmino Gambati
    - Software: ArcMagery / QMagery
    - Repositório: https://github.com/Yiuky/ArcMagery-releases
-   (Consulte o arquivo CITATION.cff para formatos padronizados BibTeX/APA/ABNT).
+   (Consulte o arquivo CITATION.cff para os formatos padronizados BibTeX/APA/ABNT.)
 
-3. RESTRIÇÕES DE REDISTRIBUIÇÃO E ENGENHARIA REVERSA:
-   É vedada a redistribuição comercial dos binários sem autorização prévia e expressa do autor.
-   O software é distribuído em formato binário compilado.
+3. RESTRIÇÕES:
+   Sem autorização prévia e expressa do autor, é vedado:
+   a) redistribuir, vender, alugar, sublicenciar ou disponibilizar o Software (inclusive o motor
+      compilado "arcmagery_backend.exe") a terceiros, de forma gratuita ou onerosa; a divulgação
+      deve apontar para o repositório oficial acima;
+   b) descompilar, desmontar, extrair o código ou aplicar engenharia reversa ao motor compilado,
+      ou criar obras derivadas a partir dele;
+   c) remover ou alterar avisos de autoria, de licença ou de citação.
+   O motor (backend) é distribuído apenas em formato binário compilado. Os scripts Python da
+   interface do Add-In são entregues somente para execução e estão sujeitos a estes mesmos termos.
+   O código-fonte pode ser fornecido pelo autor mediante solicitação direta e acordo por escrito.
+
+4. VERSÕES ANTERIORES:
+   As versões publicadas até a 2.4.3 (inclusive as nightlies até 2.4.4-nightly.20261007) foram
+   distribuídas sob a Licença MIT, que continua valendo para as cópias já obtidas sob ela. Estes
+   termos aplicam-se à versão 2.4.4 e às posteriores.
+
+5. SERVIÇOS DE TERCEIROS:
+   O Software acessa serviços de terceiros (Google Earth Engine, INPE, CNES/GEODES, Esri, Google,
+   Microsoft). O uso desses serviços é de responsabilidade do usuário e segue os termos de cada
+   provedor.
 
 O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU IMPLÍCITA,
 INCLUINDO, MAS NÃO SE LIMITANDO A, GARANTIAS DE COMERCIALIZAÇÃO, ADEQUAÇÃO A UMA FINALIDADE

@@ -1,0 +1,41 @@
+AVISOS DE COMPONENTES DE TERCEIROS - ARCMAGERY / QMAGERY
+
+O motor do ArcMagery (arcmagery_backend.exe) incorpora os componentes abaixo, que continuam sob as
+licenças de seus autores. Os textos completos das licenças acompanham cada projeto em seus sites oficiais.
+As bibliotecas dinâmicas (.dll) ficam em arquivos separados dentro da pasta do motor, e podem ser
+substituídas pelo usuário por versões compatíveis (relevante para as licenças LGPL).
+
+Componente               Licença                        Site
+-----------------------  -----------------------------  ------------------------------------------
+Python 3.12              PSF License                    https://www.python.org
+PyInstaller (bootloader) GPL-2.0 com exceção de         https://pyinstaller.org
+                         distribuição de executáveis
+GDAL / OGR               MIT/X                          https://gdal.org
+PROJ                     MIT                            https://proj.org
+GEOS                     LGPL-2.1                       https://libgeos.org
+libgeotiff               MIT/X                          https://github.com/OSGeo/libgeotiff
+libtiff                  BSD-style (libtiff)            http://www.libtiff.org
+libjpeg(-turbo)          IJG / BSD-3-Clause             https://libjpeg-turbo.org
+libpng, zlib             libpng / zlib                  http://www.libpng.org, https://zlib.net
+OpenJPEG                 BSD-2-Clause                   https://www.openjpeg.org
+libwebp                  BSD-3-Clause                   https://chromium.googlesource.com/webm/libwebp
+zstd                     BSD-3-Clause                   https://facebook.github.io/zstd
+LERC                     Apache-2.0                     https://github.com/Esri/lerc
+libcurl                  curl license                   https://curl.se
+OpenSSL 3                Apache-2.0                     https://www.openssl.org
+SQLite                   Domínio público                https://sqlite.org
+SpatiaLite               MPL-1.1 / GPL-2.0+ / LGPL-2.1+ https://www.gaia-gis.it/fossil/libspatialite
+HDF5                     BSD-3-Clause                   https://www.hdfgroup.org
+netCDF-C                 BSD-3-Clause                   https://www.unidata.ucar.edu/software/netcdf
+Xerces-C++               Apache-2.0                     https://xerces.apache.org/xerces-c
+libxml2, libiconv        MIT / LGPL-2.1+                https://gitlab.gnome.org/GNOME/libxml2
+NumPy                    BSD-3-Clause                   https://numpy.org
+Pillow                   HPND                           https://python-pillow.org
+
+Baixados na primeira execução (não fazem parte do motor), com SHA-256 conferido:
+earthengine-api e dependências (Apache-2.0, BSD, MIT) em %LOCALAPPDATA%\ArcMagery\pylibs.
+
+Add-In (Python 2.7): comtypes 1.1.7 (MIT), incluído em vendor/comtypes/LICENSE.txt.
+
+Imagens e dados: © Google, © Esri e parceiros, © Microsoft, CBERS/Amazônia-1 © INPE, SPOT © CNES
+(Licence Ouverte Etalab 2.0). Respeite os termos de cada provedor.

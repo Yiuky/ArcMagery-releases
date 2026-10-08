@@ -1,9 +1,12 @@
 ArcMagery / QMagery
-Copyright (c) 2024-2026 Joberth Firmino Gambati
+Copyright (c) 2024-2026 Joberth Firmino Gambati. Todos os direitos reservados.
 
-Este produto inclui software desenvolvido de forma pessoal e independente por Joberth Firmino Gambati.
+Este produto é software desenvolvido de forma pessoal e independente por Joberth Firmino Gambati.
 
 CITAÇÃO OBRIGATÓRIA:
-O uso do ArcMagery ou QMagery em trabalhos técnicos, científicos, acadêmicos ou periciais
-exige a devida citação do software e do seu autor. Para instruções detalhadas e formatos
-de citação, consulte CITATION.cff e README.md.
+O uso do ArcMagery ou do QMagery em trabalhos técnicos, científicos, acadêmicos ou periciais
+exige a devida citação do software e do seu autor. Para instruções detalhadas e formatos de
+citação, consulte CITATION.cff e README.md.
+
+O motor do software é distribuído compilado; a redistribuição e a engenharia reversa dependem de
+autorização expressa (ver LICENSE).
