@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Repositório de plugins do QGIS para o QMagery. Gerado por tools/qgis_repo.py: não edite à mão. -->
 <plugins>
-  <pyqgis_plugin name="QMagery" version="2.4.4-beta.20261007">
+  <pyqgis_plugin name="QMagery" version="2.4.4">
     <description><![CDATA[Imagens de satélite no QGIS: Google Earth Engine, CBERS/Amazônia-1 (INPE), SPOT 1-5 (CNES), Google Earth histórico, Esri Wayback e mosaicos XYZ.]]></description>
-    <about><![CDATA[O QMagery busca e carrega imagens de satélite direto no painel de camadas do QGIS, recortadas na área de interesse e na resolução nativa: Sentinel-2 e Landsat 1-9 (Google Earth Engine), CBERS-2/2B/4/4A e Amazônia-1 (STAC do INPE), SPOT 1-5 (CNES, alinhado à Esri World Imagery), datas do Google Earth histórico e versões do Esri World Imagery Wayback. Usa o mesmo backend do ArcMagery (plugin do ArcMap 10.8). Projeto pessoal e independente, código aberto (MIT). O Earth Engine exige um projeto do Google Cloud; o download do SPOT exige a chave gratuita do GEODES.]]></about>
-    <version>2.4.4-beta.20261007</version>
+    <about><![CDATA[O QMagery busca e carrega imagens de satélite direto no painel de camadas do QGIS, recortadas na área de interesse e na resolução nativa: Sentinel-2 e Landsat 1-9 (Google Earth Engine), CBERS-2/2B/4/4A e Amazônia-1 (STAC do INPE), SPOT 1-5 (CNES, alinhado à Esri World Imagery), datas do Google Earth histórico e versões do Esri World Imagery Wayback. Usa o mesmo backend do ArcMagery (plugin do ArcMap 10.8). Projeto pessoal e independente, uso gratuito, licença proprietária (citação obrigatória). O Earth Engine exige um projeto do Google Cloud; o download do SPOT exige a chave gratuita do GEODES.]]></about>
+    <version>2.4.4</version>
     <trusted>False</trusted>
     <qgis_minimum_version>3.18.0</qgis_minimum_version>
     <qgis_maximum_version>3.99.0</qgis_maximum_version>
     <homepage>https://github.com/Yiuky/ArcMagery-releases#readme</homepage>
-    <file_name>qmagery.2.4.4-beta.20261007.zip</file_name>
+    <file_name>qmagery.2.4.4.zip</file_name>
     <icon>https://raw.githubusercontent.com/Yiuky/ArcMagery-releases/main/qgis_plugin/qmagery/resources/icons/icon64.png</icon>
     <author_name>Joberth Firmino Gambati</author_name>
-    <download_url>https://github.com/Yiuky/ArcMagery-releases/releases/download/v2.4.4-nightly.20261007/QMagery-2.4.4-nightly.20261007.zip</download_url>
+    <download_url>https://github.com/Yiuky/ArcMagery-releases/releases/download/v2.4.4/QMagery-2.4.4.zip</download_url>
     <uploaded_by>Yiuky</uploaded_by>
-    <create_date>2026-10-02T00:00:00</create_date>
-    <update_date>2026-10-07T00:00:00</update_date>
-    <experimental>True</experimental>
+    <create_date>2026-10-08T00:00:00</create_date>
+    <update_date>2026-10-08T00:00:00</update_date>
+    <experimental>False</experimental>
     <deprecated>False</deprecated>
     <tracker>https://github.com/Yiuky/ArcMagery-releases/issues</tracker>
     <repository>https://github.com/Yiuky/ArcMagery-releases</repository>
@@ -26,7 +26,7 @@
     <rating_votes>0</rating_votes>
     <external_dependencies></external_dependencies>
     <server>False</server>
-    <changelog><![CDATA[2.4.4-beta.20261007 (experimental): versão-ponte para migração de atualizações para o repositório público Yiuky/ArcMagery-releases; SPOT com repetição automática em falhas HTTP 5xx do GEODES.]]></changelog>
+    <changelog><![CDATA[2.4.4: backend compilado (motor), sem exigir o QGIS para o ArcMagery; SPOT com repetição automática em falhas HTTP 5xx do GEODES; licença proprietária de uso gratuito (citação obrigatória).]]></changelog>
     <category>Raster</category>
   </pyqgis_plugin>
 </plugins>
