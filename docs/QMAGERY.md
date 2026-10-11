@@ -85,10 +85,16 @@ Em **⚙ Configurações › Chave do GEODES (SPOT)...**, siga os passos, cole a
    - **Extensão da tela**: até a escala 1:500.000 (o QMagery oferece ajustar o zoom);
    - **Camada vetorial**: uma camada de polígonos do projeto (só as feições selecionadas, se houver),
      em qualquer sistema de coordenadas.
-3. Clique em **Buscar**. Cada linha da tabela é uma cena (ou uma data/versão).
-4. Selecione uma ou várias linhas (Ctrl/Shift) e clique em **Carregar no QGIS**: cada cena vira uma
-   camada, baixadas em fila. Duplo clique numa linha mostra a **miniatura**.
-5. **Substituir camada**: escolha a camada raster em *Camada a substituir* e clique em **Substituir
+3. Clique em **Buscar**. Cada linha da tabela é uma cena (ou uma data/versão), com uma informação por
+   coluna: data, nuvens, tile/rota (órbita/ponto no CBERS, K-J no SPOT), cobertura da área, satélite e cena.
+4. **Filtros** acima da tabela: **Nuvens até X%** (as cenas sem informação de nuvens continuam visíveis) e
+   **Rota / tile** (ex.: `226/071`, `21LWC`, `684-371`). Valem na hora para a tabela e na próxima busca; no
+   Earth Engine, nuvens e rota/tile são filtradas no servidor. **Limpar filtros** mostra tudo de novo.
+5. Selecione uma ou várias linhas (Ctrl/Shift). A **pré-visualização** ao lado de *Carregar no QGIS* mostra a
+   miniatura da cena selecionada sozinha (clique nela, ou duplo clique na linha, para ampliar). Desmarque
+   *Miniatura automática* para baixar só quando pedir. Clique em **Carregar no QGIS**: cada cena vira uma
+   camada, baixadas em fila.
+6. **Substituir camada**: escolha a camada raster em *Camada a substituir* e clique em **Substituir
    camada**; a nova ocupa o mesmo grupo e a mesma posição.
 
 As camadas entram com a simbologia certa: multibanda do GEE em cor natural, índices com rampa de cores,

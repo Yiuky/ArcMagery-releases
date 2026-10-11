@@ -249,16 +249,25 @@ quadrantes, baixa em paralelo e junta tudo num único GeoTIFF com GDAL, mantendo
 ### 6.5 Busca e tabela de resultados
 
 1. Informe a **Data Inicial** e a **Data Final** (`DD/MM/AAAA`) ou use os atalhos **30d**, **60d** e **90d**.
-2. Clique em **Buscar Imagens no GEE** (o rótulo muda conforme a fonte).
-3. A tabela mostra:
-   - **Data / Hora** da passagem;
-   - **Nuvens (%)** sobre a cena;
-   - **Tile / P-R:** tile MGRS (Sentinel-2) ou órbita/ponto (Landsat). A busca mede no servidor quanto da
-     área cada cena cobre com imagem válida: cenas abaixo de 0,5% (ex.: na borda da faixa imageada) não
-     aparecem, e as parciais mostram a cobertura (ex.: `21LVD · 21% da AOI`);
-   - **Nome da Cena** no acervo;
-   - **Status:** se a cena já foi carregada.
-4. Selecione uma ou várias linhas (Ctrl / Shift) e use **Miniatura** para conferir antes de baixar.
+2. Clique em **Buscar imagens no GEE** (o rótulo muda conforme a fonte).
+3. A tabela mostra cada dado numa coluna (as colunas mudam conforme a fonte):
+   - **Data** da passagem e **Nuvens** sobre a cena;
+   - **Tile / rota:** tile MGRS (Sentinel-2), órbita/ponto (Landsat e CBERS) ou K-J (SPOT);
+   - **Cobertura:** quanto da área cada cena cobre com imagem válida. Cenas abaixo de 0,5% (ex.: na borda da
+     faixa imageada) não aparecem;
+   - **Satélite**, e no SPOT o **modo e a resolução**;
+   - **Cena** (nome no acervo) e **Status** (se já foi carregada).
+4. **Filtros** (acima da tabela):
+   - **Nuvens até X%:** esconde as cenas mais nubladas. As cenas sem informação de nuvens continuam
+     visíveis;
+   - **Rota / tile:** mostra só a rota ou o tile digitado (ex.: `226/071`, `21LWC`, `684-371`). Separador e
+     zeros à esquerda não importam;
+   - os filtros valem na hora para a tabela e também na **próxima busca** (no Earth Engine, a rota/tile e as
+     nuvens são filtradas no servidor, e a busca traz até 100 cenas que já atendem a eles). **Limpar filtros**
+     mostra tudo de novo.
+5. Selecione uma ou várias linhas (Ctrl / Shift). A **pré-visualização** (quadro ao lado de *Carregamento*)
+   mostra a miniatura da cena selecionada sozinha; clique nela (ou em **Miniatura**) para ampliar. Desmarque
+   *Miniatura automática* para baixar só quando clicar. No Earth Engine ela aparece depois de conectar ao GEE.
 
 ### 6.6 Carga no TOC e substituição de camadas
 
