@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Imagens de satélite no ArcGIS Desktop (ArcMap 10.8 / 10.8.2) e no QGIS, direto no mapa e na resolução nativa</strong><br>
-  <em>Google Earth Engine · Google Earth (atual e histórico) · Esri Wayback · CBERS-2/2B, CBERS-4/4A e Amazônia-1 (INPE) · SPOT 1–5 (CNES)</em>
+  <em>Google Earth Engine · Sentinel/Landsat abertos · Google Earth (atual e histórico) · Esri Wayback · CBERS-2/2B, CBERS-4/4A e Amazônia-1 (INPE) · SPOT 1–5 (CNES)</em>
 </p>
 
 <p align="center">
@@ -50,8 +50,9 @@ e perícias.
 | Fonte | O que oferece | Resolução |
 |---|---|---|
 | **Google Earth Engine** | Sentinel-2, Landsat 1–9: cenas, mosaicos por mediana com máscara de nuvem, índices (NDVI, NDWI, NDMI, NBR, EVI, SAVI), matemática de bandas e multibanda completa | 10–60 m |
+| **Sentinel / Landsat (dados abertos)** | **Sem conta:** Sentinel-2 L2A (10 m), Landsat 4–9 Coleção 2 (30 m, desde 1982), Sentinel-1 radar RTC (10 m, enxerga através de nuvens) e MDE Copernicus GLO-30, pelos catálogos públicos Earth Search e Microsoft Planetary Computer | 10–30 m |
 | **CBERS / Amazônia-1 (INPE)** | STAC do INPE, 32 coleções: CBERS-4A WPM (2 m pan, 8 m multiespectral, fusionada 2 m), MUX, WFI, PAN 5/10 m, Amazônia-1 WFI; cubos sem nuvens com NDVI/EVI; histórico CBERS-2/2B (2003–2010) | 2–260 m |
-| **SPOT 1–5 (CNES)** | Acervo SPOT World Heritage 1986–2015 pelo GEODES, com **alinhamento automático à Esri** (o produto bruto vem com 150–480 m de erro; depois, ~2–5 m). Busca livre; download com a chave gratuita do GEODES | 2,5–20 m |
+| **SPOT 1–5 (CNES)** | Acervo SPOT World Heritage 1986–2015 pelo GEODES, com **alinhamento automático à Esri** medido na cena inteira (o produto bruto vem com 150–480 m de erro; depois, ~5–15 m). Busca livre; download com a chave gratuita do GEODES | 2,5–20 m |
 | **Google Earth histórico** | As datas do histórico do Google Earth (como no Google Earth Pro), com provedor e cobertura | ~0,15–4,8 m |
 | **Esri Wayback** | Versões da Esri World Imagery desde 2014, com a **data de captura**, o satélite e a resolução | ~0,3–4,6 m |
 | **Google Earth / XYZ** | Google Satélite e Híbrido, Esri World Imagery e Clarity, Bing Aerial, costurados num GeoTIFF georreferenciado | até ~0,15 m |
@@ -222,5 +223,6 @@ desenvolvedor: ajuda a manter o projeto vivo e a trazer novas fontes de imagem.
   engenharia reversa dependem de autorização. Código-fonte, parcerias e uso comercial: contato direto com o autor.
   As versões até a 2.4.3 foram publicadas sob a MIT.
 - **Componentes de terceiros:** [docs/THIRD_PARTY_NOTICES.txt](docs/THIRD_PARTY_NOTICES.txt).
-- **Imagens:** © Google, © Esri e parceiros, © Microsoft, CBERS/Amazônia-1 © INPE, SPOT © CNES (Etalab 2.0) e os
+- **Imagens:** © Google, © Esri e parceiros, © Microsoft, CBERS/Amazônia-1 © INPE, SPOT © CNES (Etalab 2.0),
+  Sentinel © Copernicus/ESA, Landsat © USGS, MDE Copernicus © DLR/Airbus (licença Copernicus) e os
   provedores do Google Earth Engine. Respeite a licença de cada fonte.

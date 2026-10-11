@@ -6,7 +6,7 @@
 
 <p align="center">
   <strong>Imagens de satélite no ArcGIS Desktop (ArcMap 10.8.x), direto no TOC e na resolução nativa</strong><br>
-  Google Earth Engine · CBERS/Amazônia-1 (INPE) · SPOT 1–5 (CNES) · Google Earth (atual e histórico) · Esri Wayback · XYZ<br>
+  Google Earth Engine · Sentinel/Landsat abertos · CBERS/Amazônia-1 (INPE) · SPOT 1–5 (CNES) · Google Earth (atual e histórico) · Esri Wayback · XYZ<br>
   <em>Versão 2.4.7 · projeto pessoal e independente de Joberth Firmino Gambati</em>
 </p>
 
@@ -28,6 +28,7 @@
    - [6.6 Carga no TOC e substituição de camadas](#66-carga-no-toc-e-substituição-de-camadas)
    - [6.7 Configurações](#67-configurações)
    - [6.8 CBERS / Amazônia-1 (INPE)](#68-cbers--amazônia-1-inpe)
+   - [6.8.1 Sentinel / Landsat (dados abertos)](#681-sentinel--landsat-dados-abertos)
    - [6.9 SPOT 1–5 (CNES) e a chave do GEODES](#69-spot-15-cnes-e-a-chave-do-geodes)
    - [6.10 Google Earth histórico](#610-google-earth-histórico)
    - [6.11 Esri Wayback](#611-esri-wayback)
@@ -291,7 +292,8 @@ Botão **⚙ Configurações** no topo da janela.
 * **Margem de buffer da AOI** em metros.
 * **Atualização do Plugin:** abre o assistente de atualização ([seção 7](#7-atualizar-voltar-de-versão-e-desinstalar)).
 
-**Aba Chave do GEODES (SPOT):** veja a [seção 6.9](#69-spot-15-cnes-e-a-chave-do-geodes).
+**Aba SPOT (GEODES):** chave do GEODES e área do georreferenciamento; veja a
+[seção 6.9](#69-spot-15-cnes-e-a-chave-do-geodes).
 
 ### 6.8 CBERS / Amazônia-1 (INPE)
 
@@ -329,6 +331,32 @@ recorte é sempre na grade nativa da cena.
   vez de ~2 s. Se a medição falhar (rede), a tabela mostra a estimativa como "até X% da AOI".
 * Depois do recorte, o plugin avisa se a imagem cobrir menos de 50% da área.
 
+### 6.8.1 Sentinel / Landsat (dados abertos)
+
+Escolha **Sentinel / Landsat** na barra *Fonte de imagens*. **Não é preciso conta nem login** (nem no Earth
+Engine): o ArcMagery consulta catálogos STAC públicos e lê só a janela de pixels da área, na grade nativa da cena.
+
+| Coleção | Resolução | Período | Catálogo |
+|---|---|---|---|
+| Sentinel-2 L2A, coleção 1 (harmonizada) | 10 m (SWIR 20 m) | 2015 até hoje | Earth Search (Element 84) |
+| Sentinel-2 L2A, arquivo completo | 10 m (SWIR 20 m) | 2016 até hoje | Earth Search (Element 84) |
+| Landsat 8 e 9, Coleção 2 Nível 2 | 30 m | 2013 até hoje | Microsoft Planetary Computer |
+| Landsat 7, Coleção 2 Nível 2 | 30 m | 1999 a 2022 | Microsoft Planetary Computer |
+| Landsat 4 e 5, Coleção 2 Nível 2 | 30 m | 1982 a 2013 | Microsoft Planetary Computer |
+| Sentinel-1 radar RTC (VV e VH) | 10 m | 2014 até hoje | Microsoft Planetary Computer |
+| MDE Copernicus GLO-30 (altitude) | 30 m | 2011 a 2015 | Earth Search (Element 84) |
+
+* **Composições:** cor natural (no Sentinel-2 também a *TCI* pronta, 8 bits), falsa cor, agricultura (SWIR 1,
+  NIR, azul), SWIR (SWIR 2, NIR, vermelho) e multibanda (azul, verde, vermelho, NIR, SWIR 1 e SWIR 2; no
+  Sentinel-2 as bandas de 20 m entram na grade de 10 m). No radar: VV, VH ou as duas.
+* **Sentinel-2:** a *coleção 1* foi reprocessada pela ESA e tem valores comparáveis entre datas; o *arquivo
+  completo* tem todas as cenas, mas a partir de 25/01/2022 os valores têm +1000 de deslocamento.
+* **Landsat 7:** desde 31/05/2003 as cenas têm faixas sem dados (falha do SLC).
+* **Sentinel-1:** radar enxerga através das nuvens. Os valores são lineares (gama0); para ver em dB use
+  10·log10 na *Calculadora Raster*.
+* **MDE:** os quadros de 1° que tocam a área viram um mosaico; a tabela mostra uma linha só.
+* O Planetary Computer exige um token de acesso **anônimo e gratuito**, que o ArcMagery pede sozinho.
+
 ### 6.9 SPOT 1–5 (CNES) e a chave do GEODES
 
 Acervo **SPOT World Heritage** do CNES (1986–2015, licença aberta Etalab 2.0), acessado pela API do portal
@@ -351,12 +379,20 @@ Acervo **SPOT World Heritage** do CNES (1986–2015, licença aberta Etalab 2.0)
   110 MB, baixado uma vez e guardado em `%LOCALAPPDATA%\ArcMagery\spot_cache`; recortes seguintes da
   mesma cena não usam a cota.
 * **Posição corrigida automaticamente:** o produto do CNES é de nível 1A (sem ortorretificação), com erro
-  de posição de 150 a 480 m nas cenas medidas. O ArcMagery mede esse deslocamento contra a Esri World
-  Imagery, em várias janelas, e o corrige antes de gravar (resíduo de cerca de 2 a 5 m nas cenas
-  testadas). Se a cena tiver nuvens demais ou pouca textura em comum, ela é carregada **sem** a correção,
-  com aviso.
-* **Saída:** GeoTIFF em UTM (SIRGAS 2000 no Brasil), recortado à área, com pirâmides. Atribuição
-  obrigatória: *"SPOT images acquired by CNES's Spot World Heritage Programme"*.
+  de posição de 150 a 480 m nas cenas medidas, e esse erro **varia ao longo da cena** (50 a 170 m de um canto
+  a outro). O ArcMagery compara a cena com a Esri World Imagery em dezenas de pontos, ajusta um modelo de
+  correção e o refina na área da tela antes de gravar (erro restante de cerca de 4 a 11 m nas cenas
+  testadas). Se a cena inteira tiver nuvens demais ou pouca textura em comum, ela é carregada **sem** a
+  correção, com aviso.
+* **Área do georreferenciamento** (**⚙ Configurações › SPOT (GEODES) › Georreferenciamento**):
+  * **Otimizada** (padrão): mede o erro na cena inteira e recorta a área da tela. Funciona mesmo quando a
+    área da tela tem pouca textura (água, nuvens, plantio uniforme).
+  * **Cena inteira:** entrega a cena toda (cerca de 60 x 60 km), com o mesmo modelo; ignora o recorte da
+    tela. Arquivo de 100 a 600 MB.
+  * **Só a tela:** o método até a versão 2.4.7 (um deslocamento medido em volta da área). Mais rápido, mas
+    falha em áreas sem textura.
+* **Saída:** GeoTIFF em UTM (SIRGAS 2000 no Brasil), recortado à área (ou a cena inteira), com pirâmides.
+  Atribuição obrigatória: *"SPOT images acquired by CNES's Spot World Heritage Programme"*.
 
 #### Como obter e cadastrar a chave do GEODES (cerca de 3 minutos)
 
@@ -364,7 +400,7 @@ Acervo **SPOT World Heritage** do CNES (1986–2015, licença aberta Etalab 2.0)
    Confirme pelo link recebido por e-mail.
 2. Entre no portal, clique no seu nome (canto superior direito) › **My Profile**.
 3. No quadro **Authentication**, em **API Key**, clique em **Generate** (ou copie a chave existente).
-4. No ArcMagery: **⚙ Configurações › Chave do GEODES (SPOT)** › cole a chave › **Testar chave** (mostra a
+4. No ArcMagery: **⚙ Configurações › SPOT (GEODES)** › cole a chave › **Testar chave** (mostra a
    cota, ex.: *47 de 50 downloads disponíveis nesta hora*) › **Salvar chave**.
 5. O botão **Como obter a chave (tutorial)** repete estes passos e abre o portal.
 
@@ -582,8 +618,8 @@ ArcMap e os arquivos temporários. No fim, pergunta se você quer remover també
   de novo o texto inteiro do campo **API Key**.
 * **Cota zerada:** o limite é de 50 cenas por hora; aguarde. Cenas já baixadas estão em cache e não contam.
 * **"SPOT sem alinhamento":** a cena entrou, mas não pôde ser alinhada à Esri (nuvens, água ou pouca textura
-  em comum). A posição pode ter erro de até cerca de 500 m. Prefira uma cena com menos nuvens ou uma área
-  maior.
+  em comum na cena inteira). A posição pode ter erro de até cerca de 500 m. Confira se a área do
+  georreferenciamento está em **Otimizada** (Configurações › SPOT) e prefira uma cena com menos nuvens.
 
 ### 8.9.1 Erro de certificado ("CERTIFICATE_VERIFY_FAILED", "self-signed certificate in certificate chain")
 

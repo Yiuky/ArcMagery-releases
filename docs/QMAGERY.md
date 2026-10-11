@@ -7,7 +7,8 @@ backend: busca as cenas da área, recorta na resolução nativa e carrega no pai
 |---|---|
 | **Google Earth Engine** | Sentinel-2 e Landsat 1–9: composições, multibanda, índices (NDVI, NDWI, NDMI, NBR, EVI, SAVI), bandas e fórmulas digitadas |
 | **CBERS / Amazônia-1 (INPE)** | As 32 coleções do STAC do INPE (CBERS-2/2B/4/4A, Amazônia-1, cubos e mosaicos) |
-| **SPOT 1–5 (CNES)** | Acervo 1986–2015 pelo GEODES, alinhado automaticamente à Esri World Imagery |
+| **Sentinel / Landsat** | Dados abertos, sem conta: Sentinel-2 L2A, Landsat 4–9, Sentinel-1 radar e o MDE Copernicus 30 m |
+| **SPOT 1–5 (CNES)** | Acervo 1986–2015 pelo GEODES, alinhado automaticamente à Esri World Imagery (correção medida na cena inteira) |
 | **Google Earth histórico** | As datas do histórico na área, uma camada por data |
 | **Esri Wayback** | As versões da Esri World Imagery, com a data de captura |
 | **Google Earth / XYZ** | Google, Esri e Bing como camada XYZ ao vivo ou como GeoTIFF da área |
