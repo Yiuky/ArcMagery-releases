@@ -559,6 +559,26 @@ ArcMap e os arquivos temporários. No fim, pergunta se você quer remover també
 
 ## 8. Solução de problemas
 
+### 8.0 Diagnóstico completo do computador (`diagnostico.bat`)
+
+Na pasta extraída do ArcMagery, dê dois cliques em **`diagnostico.bat`**. Em 30 segundos a 3 minutos ele confere o
+computador inteiro e diz, item por item, se está **OK**, se há **AVISO** ou **PROBLEMA** e **o que fazer**:
+
+* **Windows:** versão, 64 bits, pasta do usuário, pasta temporária, disco, memória e escala da tela.
+* **ArcGIS:** ArcMap 10.8 instalado, Python 2.7, Tkinter, arcpy e **licença** (se a licença não responde, ele avisa).
+* **Add-In:** versão instalada e versão que o ArcMap está usando, arquivos completos, pasta Documentos no OneDrive.
+* **Conexão com o ArcMap:** para cada ArcMap aberto, se o ArcMagery está recebendo a **escala** e a **área** e,
+  se não, o motivo (ex.: data frame sem sistema de coordenadas).
+* **Motor:** versão comparada com a do Add-In e exe apagado pelo antivírus.
+* **QGIS / QMagery.**
+* **Rede:** GitHub, Earth Engine, INPE, GEODES, Earth Search, Planetary Computer, Esri e Google Earth, com proxy,
+  certificados e a hora do computador.
+* **Configurações** corrompidas e **erros recentes** no log.
+
+Ele só verifica: não altera nada no computador. O relatório fica em `%LOCALAPPDATA%\ArcMagery\diagnostico`
+(texto e JSON); envie-o ao relatar um problema. A chave do GEODES e o login do Google não entram no relatório.
+Opção mais rápida, sem rede, arcpy e motor: `diagnostico.bat --rapido`.
+
 ### 8.1 O instalador mostra `[PROBLEMA]` ou `[AVISO]`
 
 * Leia o *o que fazer* logo abaixo de cada item. O diagnóstico já corrige sozinho o que é seguro: instala
@@ -597,6 +617,15 @@ ArcMap e os arquivos temporários. No fim, pergunta se você quer remover també
 
 * Áreas muito grandes passam dos limites de memória e da API. Aproxime o mapa da área de trabalho ou use o
   botão **Ajustar 1:500.000**.
+* A busca segue quando a escala está até 1:500.000 **ou** quando a área visível tem até 200 km de lado. Uma
+  escala errada ou ausente não impede a busca numa área pequena.
+* **A linha da escala diz "ArcMap foi fechado", "não responde" ou "sem conexão":** feche janelas de diálogo
+  abertas no ArcMap, espere ele terminar o que está fazendo e clique em **Reconectar**. Se não resolver, confira
+  em *Customize › Extensions* se a extensão do ArcMagery está marcada e abra o ArcMagery de novo pelo botão.
+  O `diagnostico.bat` ([seção 8.0](#80-diagnóstico-completo-do-computador-diagnosticobat)) mostra se o ArcMap está
+  mandando a escala e por que não.
+* **"Escala do mapa: indisponível (o data frame não tem sistema de coordenadas definido)":** defina-o em
+  *View › Data Frame Properties › Coordinate System*.
 
 ### 8.6 Erro com camada vetorial (AOI)
 
