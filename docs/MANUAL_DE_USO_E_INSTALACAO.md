@@ -257,11 +257,15 @@ quadrantes, baixa em paralelo e junta tudo num único GeoTIFF com GDAL, mantendo
      faixa imageada) não aparecem;
    - **Satélite**, e no SPOT o **modo e a resolução**;
    - **Cena** (nome no acervo) e **Status** (se já foi carregada).
+
+   Clique no **título de uma coluna** para ordenar por ela (ex.: *Nuvens* põe a menos nublada no topo; *Data*, a
+   mais recente); clique de novo para inverter. A seta ▲/▼ mostra a ordem em uso.
 4. **Filtros** (acima da tabela):
    - **Nuvens até X%:** esconde as cenas mais nubladas. As cenas sem informação de nuvens continuam
      visíveis;
    - **Rota / tile:** mostra só a rota ou o tile digitado (ex.: `226/071`, `21LWC`, `684-371`). Separador e
-     zeros à esquerda não importam;
+     zeros à esquerda não importam. Quando a busca traz mais de um tile, eles aparecem como **botões ao lado
+     do campo**: um clique filtra por aquele tile, outro clique tira o filtro;
    - os filtros valem na hora para a tabela e também na **próxima busca** (no Earth Engine, a rota/tile e as
      nuvens são filtradas no servidor, e a busca traz até 100 cenas que já atendem a eles). **Limpar filtros**
      mostra tudo de novo.

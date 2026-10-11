@@ -87,9 +87,11 @@ Em **⚙ Configurações › Chave do GEODES (SPOT)...**, siga os passos, cole a
      em qualquer sistema de coordenadas.
 3. Clique em **Buscar**. Cada linha da tabela é uma cena (ou uma data/versão), com uma informação por
    coluna: data, nuvens, tile/rota (órbita/ponto no CBERS, K-J no SPOT), cobertura da área, satélite e cena.
+   Clique no **título de uma coluna** para ordenar por ela; de novo, para inverter (seta ▲/▼).
 4. **Filtros** acima da tabela: **Nuvens até X%** (as cenas sem informação de nuvens continuam visíveis) e
-   **Rota / tile** (ex.: `226/071`, `21LWC`, `684-371`). Valem na hora para a tabela e na próxima busca; no
-   Earth Engine, nuvens e rota/tile são filtradas no servidor. **Limpar filtros** mostra tudo de novo.
+   **Rota / tile** (ex.: `226/071`, `21LWC`, `684-371`). Quando a busca traz mais de um tile, eles aparecem como
+   botões ao lado do campo: um clique filtra, outro tira o filtro. Valem na hora para a tabela e na próxima
+   busca; no Earth Engine, nuvens e rota/tile são filtradas no servidor. **Limpar filtros** mostra tudo de novo.
 5. Selecione uma ou várias linhas (Ctrl/Shift). A **pré-visualização** ao lado de *Carregar no QGIS* mostra a
    miniatura da cena selecionada sozinha (clique nela, ou duplo clique na linha, para ampliar). Desmarque
    *Miniatura automática* para baixar só quando pedir. Clique em **Carregar no QGIS**: cada cena vira uma
