@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Manual de uso e instalação
+    url: https://github.com/Yiuky/ArcMagery-releases/blob/main/docs/MANUAL_DE_USO_E_INSTALACAO.md
+    about: Passo a passo de instalação, uso de cada fonte de imagens e configurações.
+  - name: Solução de problemas
+    url: https://github.com/Yiuky/ArcMagery-releases/blob/main/docs/MANUAL_DE_USO_E_INSTALACAO.md#8-solução-de-problemas
+    about: Erros comuns (instalação, Earth Engine, CBERS, SPOT) e como resolver.
+  - name: Relatar vulnerabilidade (privado)
+    url: https://github.com/Yiuky/ArcMagery-releases/security/advisories/new
+    about: Falhas de segurança não devem ir em issue pública.
