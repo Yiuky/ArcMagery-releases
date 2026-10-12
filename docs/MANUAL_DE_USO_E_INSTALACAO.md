@@ -175,6 +175,14 @@ As outras fontes (CBERS, SPOT, Google Earth, Esri) **não** dependem do Earth En
 
 ## 6. Uso
 
+**Telas pequenas.** A janela se ajusta à tela, inclusive em notebooks 1366×768 com escala de 125–150%:
+* Os **parâmetros** ganham barra de rolagem quando não cabem (role com a roda do mouse sobre eles), e o botão
+  **Buscar** fica sempre visível embaixo.
+* Com a janela estreita, as **fontes** viram uma lista suspensa.
+* Os botões **Carregar no ArcMap** e **Interromper** continuam na tela.
+
+O mesmo vale para o QMagery.
+
 ### 6.1 Google Earth Engine: satélites e períodos
 
 Ao escolher o satélite, o quadro azul da coluna esquerda mostra o período, a coleção do Earth Engine e
@@ -269,9 +277,14 @@ quadrantes, baixa em paralelo e junta tudo num único GeoTIFF com GDAL, mantendo
    - os filtros valem na hora para a tabela e também na **próxima busca** (no Earth Engine, a rota/tile e as
      nuvens são filtradas no servidor, e a busca traz até 100 cenas que já atendem a eles). **Limpar filtros**
      mostra tudo de novo.
-5. Selecione uma ou várias linhas (Ctrl / Shift). A **pré-visualização** (quadro ao lado de *Carregamento*)
-   mostra a miniatura da cena selecionada sozinha; clique nela (ou em **Miniatura**) para ampliar. Desmarque
-   *Miniatura automática* para baixar só quando clicar. No Earth Engine ela aparece depois de conectar ao GEE.
+5. Selecione uma ou várias linhas (Ctrl / Shift). A **pré-visualização** (quadro em *Cena selecionada*) mostra
+   a miniatura da cena selecionada sozinha; clique nela (ou em **Miniatura**) para ampliar.
+   * Logo depois da busca, as miniaturas de todas as cenas são geradas em segundo plano, e a cena que você
+     seleciona passa na frente. Elas ficam guardadas em `%LOCALAPPDATA%\ArcMagery\thumbs`: voltar a uma cena,
+     mesmo noutro dia, é instantâneo.
+   * A geração espera os downloads terminarem.
+   * Desmarque *Miniatura automática* para não gerar nada sozinho.
+   * No Earth Engine, a miniatura aparece depois de conectar ao GEE.
 
 ### 6.6 Carga no TOC e substituição de camadas
 
@@ -566,6 +579,14 @@ computador inteiro e diz, item por item, se está **OK**, se há **AVISO** ou **
 
 * **Windows:** versão, 64 bits, pasta do usuário, pasta temporária, disco, memória e escala da tela.
 * **ArcGIS:** ArcMap 10.8 instalado, Python 2.7, Tkinter, arcpy e **licença** (se a licença não responde, ele avisa).
+* **Python do ArcGIS** (o que o ArcMap carrega; se ele estraga, o arcpy e o ArcMagery param):
+  * o **numpy**, do qual o arcpy depende;
+  * **arquivos de outra versão** deixados por programas que instalaram pacotes por cima dos do ArcGIS;
+  * **arquivos faltando** nos pacotes;
+  * **outro Python 2.7** que tomou o lugar do Python do ArcGIS;
+  * as variáveis **PYTHONHOME/PYTHONPATH**;
+  * pacotes instalados com `pip install --user`;
+  * a ligação do Python ao arcpy (`Desktop10.8.pth`).
 * **Add-In:** versão instalada e versão que o ArcMap está usando, arquivos completos, pasta Documentos no OneDrive.
 * **Conexão com o ArcMap:** para cada ArcMap aberto, se o ArcMagery está recebendo a **escala** e a **área** e,
   se não, o motivo (ex.: data frame sem sistema de coordenadas).
@@ -575,9 +596,25 @@ computador inteiro e diz, item por item, se está **OK**, se há **AVISO** ou **
   certificados e a hora do computador.
 * **Configurações** corrompidas e **erros recentes** no log.
 
-Ele só verifica: não altera nada no computador. O relatório fica em `%LOCALAPPDATA%\ArcMagery\diagnostico`
-(texto e JSON); envie-o ao relatar um problema. A chave do GEODES e o login do Google não entram no relatório.
-Opção mais rápida, sem rede, arcpy e motor: `diagnostico.bat --rapido`.
+O relatório fica em `%LOCALAPPDATA%\ArcMagery\diagnostico` (texto e JSON); envie-o ao relatar um problema. A chave
+do GEODES e o login do Google não entram no relatório. Opção mais rápida, sem rede, arcpy e motor:
+`diagnostico.bat --rapido`.
+
+**Correção automática.** Primeiro ele só verifica. Itens marcados com *Correção automática* podem ser corrigidos:
+no fim, ele pergunta **"Corrigir agora [S,N]?"**. Com **S**, ele espera o ArcMap fechar e corrige.
+
+O que ele corrige:
+* guarda os arquivos de outra versão;
+* tira os pacotes do `pip install --user` que passam na frente dos do ArcGIS;
+* recria o `Desktop10.8.pth`;
+* remove o `PYTHONHOME` do usuário;
+* reinstala o numpy oficial **da mesma versão**, só se ainda faltar algo. Se não der certo, o numpy antigo volta
+  para o lugar.
+
+**Nada é apagado:** o que sai vai para `%LOCALAPPDATA%\ArcMagery\diagnostico\backup_<data>`, com o `correcoes.txt`
+(o que foi feito) e o **`desfazer.bat`**, que põe tudo de volta. Sem permissão na pasta do Python, clique com o
+botão direito no `diagnostico.bat` > **Executar como administrador**. O `install.bat` faz a mesma conferência
+antes de instalar. Com o arcpy quebrado, o botão do ArcMagery no ArcMap avisa e oferece abrir a correção.
 
 ### 8.1 O instalador mostra `[PROBLEMA]` ou `[AVISO]`
 

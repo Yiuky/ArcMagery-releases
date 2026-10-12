@@ -93,8 +93,9 @@ Em **⚙ Configurações › Chave do GEODES (SPOT)...**, siga os passos, cole a
    botões ao lado do campo: um clique filtra, outro tira o filtro. Valem na hora para a tabela e na próxima
    busca; no Earth Engine, nuvens e rota/tile são filtradas no servidor. **Limpar filtros** mostra tudo de novo.
 5. Selecione uma ou várias linhas (Ctrl/Shift). A **pré-visualização** ao lado de *Carregar no QGIS* mostra a
-   miniatura da cena selecionada sozinha (clique nela, ou duplo clique na linha, para ampliar). Desmarque
-   *Miniatura automática* para baixar só quando pedir. Clique em **Carregar no QGIS**: cada cena vira uma
+   miniatura da cena selecionada sozinha (clique nela, ou duplo clique na linha, para ampliar). As miniaturas
+   de todas as cenas são geradas em segundo plano logo depois da busca (a selecionada primeiro) e ficam guardadas
+   no computador para as próximas vezes. Desmarque *Miniatura automática* para baixar só quando pedir. Clique em **Carregar no QGIS**: cada cena vira uma
    camada, baixadas em fila.
 6. **Substituir camada**: escolha a camada raster em *Camada a substituir* e clique em **Substituir
    camada**; a nova ocupa o mesmo grupo e a mesma posição.
