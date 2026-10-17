@@ -107,6 +107,22 @@ fonte; mude em **⚙ Configurações**) e continuam no projeto depois de reinici
 **Interromper** cancela a operação atual e o restante da fila. Fechar a janela durante um download pede
 confirmação.
 
+### Séries temporais de índices
+
+A aba **Séries temporais** (e o botão **Série temporal de índices** na seção do Earth Engine) faz a série de NDVI,
+EVI, SAVI, NDWI, NDMI ou NBR num ponto ou numa área, igual ao ArcMagery (seção 6.14 do
+[manual](MANUAL_DE_USO_E_INSTALACAO.md#614-séries-temporais-de-índices-ndvi-evi)): Earth Engine ou dados abertos sem
+conta (MODIS, Sentinel-2, Landsat e CBERS/Amazônia-1, um ou vários, com um ou vários índices na mesma faixa ou
+em faixas separadas); ponto digitado (decimal, GMS ou UTM) ou clicado no mapa; área pelos polígonos
+selecionados de uma camada ou desenhada no mapa (clique em cada vértice; duplo clique ou botão direito termina, Esc
+cancela). O gráfico tem suavização Savitzky-Golay, anos sobrepostos, legenda clicável (oculta/mostra índices, sensores, anos
+e elementos) e exporta CSV e PNG; a janela lembra as escolhas e a última série, e o cache guarda as cenas e os anos
+já lidos.
+
+**Pasta das imagens**: embaixo do carregamento, um selo verde mostra a pasta permanente (padrão
+`Documentos\QMagery`) ou amarelo quando a opção **Temporária** está marcada; **Escolher pasta...** e **Abrir pasta**
+ficam ao lado.
+
 ### Google Earth / XYZ
 
 O botão **Google Earth / XYZ...** abre os mosaicos (Google, Esri, Bing):

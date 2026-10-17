@@ -34,6 +34,7 @@
    - [6.11 Esri Wayback](#611-esri-wayback)
    - [6.12 Google Earth / XYZ](#612-google-earth--xyz)
    - [6.13 Tela de abertura](#613-tela-de-abertura)
+   - [6.14 Séries temporais de índices (NDVI, EVI...)](#614-séries-temporais-de-índices-ndvi-evi)
 7. [Atualizar, voltar de versão e desinstalar](#7-atualizar-voltar-de-versão-e-desinstalar)
 8. [Solução de problemas](#8-solução-de-problemas)
 9. [Dados guardados no computador e rede](#9-dados-guardados-no-computador-e-rede)
@@ -288,6 +289,19 @@ quadrantes, baixa em paralelo e junta tudo num único GeoTIFF com GDAL, mantendo
 
 ### 6.6 Carga no TOC e substituição de camadas
 
+**Onde as imagens são salvas.** No quadro **Cena selecionada**, um selo mostra sempre o destino dos arquivos:
+
+| Selo | Significado |
+|---|---|
+| 🟢 **Salvando em: …** | Pasta permanente (padrão: `Documentos\ArcMagery`), uma subpasta por fonte (`EarthEngine`, `CBERS`, `Sentinel_Landsat`, `SPOT`...). As imagens continuam lá depois de fechar o ArcMap |
+| 🟡 **Pasta TEMPORÁRIA: …** | Opção **Temporária** marcada (ou uma pasta dentro do `%TEMP%`): o Windows pode apagar os arquivos e as camadas do projeto ficam sem a imagem |
+| 🔴 **Sem permissão em …** | A pasta escolhida não aceita gravação: as imagens vão para a temporária até você escolher outra |
+
+**Escolher pasta...** troca a pasta (vale para a próxima carga e para a janela Google Earth / XYZ); **Abrir pasta**
+abre o destino no Explorador. Uma cena baixada de novo ganha outro nome (`_2`, `_3`...): nada é sobrescrito.
+Até a versão 2.4.8 as imagens iam para a pasta temporária da sessão do ArcMap, apagada ao fechá-lo.
+
+
 * **Carregar no ArcMap:** baixa as cenas selecionadas (com fila, uma de cada vez) e insere cada GeoTIFF no
   TOC. Com **Agrupar no TOC**, as camadas entram num grupo com o nome indicado.
 * **Substituir no TOC:** troca os dados de uma camada raster já carregada pela nova data, mantendo a
@@ -503,7 +517,89 @@ Ao clicar no botão do ArcMagery, uma tela de abertura confere, em paralelo:
 Com tudo certo, a janela principal abre sozinha em menos de 1 s. Com avisos, abre após 6 s (o botão
 **Aguardar** pausa a contagem). O botão **Diagnosticar e corrigir** roda o mesmo diagnóstico do instalador.
 
+### 6.14 Séries temporais de índices (NDVI, EVI...)
+
+A aba **Séries temporais** mostra como um índice espectral variou ao longo dos anos num **ponto** ou numa
+**área**, num gráfico no molde do SATVeg. O botão **Série temporal de índices (NDVI, EVI...)**, no quadro do
+sensor da seção **Earth Engine**, abre a mesma aba já no Earth Engine.
+
+**Fonte dos dados**
+
+| Opção | Como funciona |
+|---|---|
+| **Earth Engine** (rápido, exige conta) | O servidor do Google calcula a série inteira em segundos (um pedido por ano) |
+| **Dados abertos** (sem conta, mais lento) | O ArcMagery lê só o pixel (ou a área) de cada cena nos servidores públicos. A primeira série num local leva alguns minutos; as cenas lidas ficam guardadas e repetir a série, mudar o período ou o índice só lê o que falta |
+
+**Produtos e índices** (marque **um ou vários** de cada: a série combina os produtos no mesmo gráfico)
+
+| Produto | Resolução e revisita | Desde | Índices |
+|---|---|---|---|
+| MODIS Terra + Aqua (MOD13Q1/MYD13Q1, o dado do SATVeg) | 250 m · 16 dias (8 dias juntando os dois) | 2000 | NDVI, EVI, SAVI, NDMI¹, NBR |
+| Sentinel-2 L2A | 10 m · 5 dias | 2015 | NDVI, EVI, SAVI, NDWI, NDMI, NBR |
+| Landsat 4 a 9 (Coleção 2, Nível 2) | 30 m · 16 dias | 1982 | NDVI, EVI, SAVI, NDWI, NDMI, NBR |
+| CBERS-4/4A e Amazônia-1 WFI (reflectância de superfície, INPE) | 55-64 m · quase diária juntando os três | 2015 | NDVI, EVI, SAVI, NDWI |
+| CBERS-4/4A MUX (reflectância de superfície, INPE) | 20 m · 26-31 dias | 2015 | NDVI, EVI, SAVI, NDWI |
+
+¹ O MOD13Q1 não tem a banda SWIR de 1,6 µm: o NDMI do MODIS vem do **MOD09A1** (500 m, 8 dias).
+O CBERS não tem SWIR (sem NDMI e NBR). Abaixo dos índices, a janela avisa quando um índice escolhido não existe
+num dos produtos marcados.
+
+Nos dados abertos, o MODIS e o Landsat vêm do Microsoft Planetary Computer, o Sentinel-2 do Earth Search (AWS) e o
+CBERS/Amazônia-1 do catálogo do INPE. O Earth Engine não tem CBERS: com o Earth Engine escolhido, o CBERS vem
+sozinho do INPE. As nuvens saem pela máscara de cada produto (SCL no Sentinel-2, QA_PIXEL no Landsat,
+confiabilidade do pixel e StateQA no MODIS, CMASK no CBERS). A data com nuvem continua na série, sem valor, e
+aparece como um traço cinza no eixo do tempo. Se um produto falhar (servidor fora do ar), os outros aparecem e a
+janela avisa o que faltou.
+
+**Local**
+
+* **Ponto digitado.** Aceita graus decimais com ponto ou vírgula (`-15.6012, -56.0987` ou `-15,6012; -56,0987`),
+  graus, minutos e segundos com hemisfério antes ou depois (`15°36'04"S 56°05'55"O`, `S 15 36 4 W 56 5 55`) e
+  UTM com o fuso (`21L 600000 8270000`, `22S 600000 8270000`, `fuso 21 sul E 600000 N 8270000`). O hemisfério
+  pode ser em português (**O** = oeste, **L** = leste). Embaixo do campo aparece o ponto lido, em decimal e em
+  GMS; em vermelho, o motivo de não ter entendido. Sem letras, a ordem é latitude, longitude; um ponto que só
+  cairia no Brasil com a ordem trocada é trocado, com aviso.
+* **Clicar no mapa.** O botão ativa a ferramenta **Ponto da série** da barra do ArcMagery; clique no mapa.
+* **Área: camada.** Usa os polígonos **selecionados** da camada (ou todos, se nenhum estiver selecionado; até
+  500). A série é a média dos pixels dentro dos polígonos, com o desvio-padrão (faixa clara no gráfico) e o
+  **% de pixels válidos** de cada data.
+* **Área: desenhada no mapa.** O botão **Desenhar** ativa a ferramenta **Área da série**: clique em cada vértice e
+  dê duplo clique no último.
+
+Se a barra do ArcMagery estiver escondida, as ferramentas ficam em **Personalizar > Barras de ferramentas >
+ArcMagery** (são os dois ícones depois do botão ArcMagery).
+
+**Gráfico**
+
+* **Índices: mesma faixa** (cada índice com a sua cor no mesmo gráfico) ou **faixas separadas** (um gráfico por
+  índice, um embaixo do outro, com o mesmo eixo do tempo).
+* **Vários produtos**: cada um tem o seu marcador (MODIS ●, Sentinel-2 ■, Landsat ▲, CBERS WFI ◆, CBERS MUX ✕),
+  com a cor do índice; a curva suavizada usa os pontos de todos os produtos marcados.
+* **Suavização**: Savitzky-Golay (janela de 7 datas, grau 2), a mesma do SATVeg, ou sem suavização.
+* **Anos sobrepostos**: um ano por linha, de janeiro a dezembro (o mais recente em destaque), para comparar
+  safras; com vários índices, uma faixa por índice.
+* **Legenda clicável**: clique num item da legenda para **ocultar ou mostrar** um índice, um sensor, um ano (em
+  anos sobrepostos), os pontos, a curva suavizada, a faixa de desvio ou as marcas de nuvem. O item oculto fica
+  apagado na legenda (clique de novo para mostrar); **Mostrar tudo** volta tudo.
+* **Datas com nuvem**: mostra ou esconde as marcas das datas sem valor.
+* **Mín. válido (%)** (só área): datas com menos pixels válidos que isso saem do gráfico (padrão 50%).
+* Passe o mouse num ponto para ver a data, o valor, o satélite e (área) o % válido; clique para fixar a data e a
+  cena embaixo do gráfico.
+* **Exportar CSV**: todas as datas, separadas por `;` e com vírgula decimal (abre direto no Excel em português),
+  com o produto, o satélite, a cena, os índices, o % válido e as curvas suavizadas. **Salvar imagem**: o gráfico em PNG.
+
+**Cache e memória da janela**: as cenas lidas nos dados abertos e os **anos já encerrados** do Earth Engine ficam
+guardados (`%LOCALAPPDATA%\ArcMagery\cache\series`): repetir a série, alongar o período ou trocar o índice só lê o
+que falta, e uma série toda no cache sai em segundos, mesmo sem internet. A janela também lembra as escolhas
+(produtos, índices, gráfico, o que estava oculto) e, ao reabrir, mostra a última série gerada. O tamanho do cache
+aparece embaixo dos parâmetros, com o botão **Limpar cache**.
+
+**Limites**: área de até 2.500 km² nos dados abertos e 50.000 km² no Earth Engine (numa área grande o Earth Engine
+usa um pixel maior; o tamanho usado aparece no resumo embaixo do gráfico). O pré-filtro **Nuvens da cena até (%)**
+descarta antes as cenas muito nubladas (padrão 80%), o que acelera os dados abertos.
+
 ---
+
 
 ## 7. Atualizar, voltar de versão e desinstalar
 
@@ -732,13 +828,14 @@ Revise os arquivos antes de anexá-los a uma issue pública: eles contêm caminh
 |---|---|
 | `%APPDATA%\ArcGEE` | Configurações, Project ID do GEE e chave do GEODES (texto simples) |
 | `%USERPROFILE%\.config\earthengine` | Login do Google Earth Engine (gravado pela biblioteca do Google) |
-| `%LOCALAPPDATA%\ArcMagery` | Motor (`engine`), componentes do Earth Engine (`pylibs`), cache SPOT e `diagnostico.txt` |
+| `%LOCALAPPDATA%\ArcMagery` | Motor (`engine`), componentes do Earth Engine (`pylibs`), cache SPOT, miniaturas (`thumbs`), séries temporais (`cache\series`), token do Planetary Computer (`cache`) e o `diagnostico` |
 | `%LOCALAPPDATA%\CGMA_ArcGEE` | Backups e logs do atualizador (nome legado da pasta) |
 | `%LOCALAPPDATA%\ESRI\Desktop10.8\AssemblyCache` | Cópia do Add-In usada pelo ArcMap |
 | `%TEMP%` | Arquivos temporários da sessão e o pacote de certificados para o GDAL |
 
 Endereços acessados (HTTPS): `earthengine.googleapis.com` e `oauth2.googleapis.com` (Earth Engine),
-`files.pythonhosted.org` (componentes do Earth Engine, só na instalação), `api.github.com`, `github.com` e
+`files.pythonhosted.org` (componentes do Earth Engine, só na instalação), `planetarycomputer.microsoft.com`,
+`*.blob.core.windows.net`, `earth-search.aws.element84.com` e `*.s3.*.amazonaws.com` (dados abertos e séries), `api.github.com`, `github.com` e
 `release-assets.githubusercontent.com` (atualizações: consulta, feed e download dos pacotes da Release),
 `raw.githubusercontent.com` (repositório de plugins do QMagery), `data.inpe.br` (CBERS),
 `geodes-portal.cnes.fr` (SPOT), `server.arcgisonline.com`, `services.arcgisonline.com`,
