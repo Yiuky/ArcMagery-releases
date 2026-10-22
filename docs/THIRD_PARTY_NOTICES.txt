@@ -37,5 +37,9 @@ earthengine-api e dependências (Apache-2.0, BSD, MIT) em %LOCALAPPDATA%\ArcMage
 
 Add-In (Python 2.7): comtypes 1.1.7 (MIT), incluído em vendor/comtypes/LICENSE.txt.
 
+ArcMap MCP: pedralcg/arcmap-mcp 2.16.0 (MIT, (c) 2026 Pedro Alcoba Gomez), com alteracoes do ArcMagery: servidor MCP em
+third_party/arcmap-mcp/src, add-in .NET em third_party/arcmap-mcp/addin, licenca em third_party/arcmap-mcp/LICENSE e
+alteracoes em third_party/arcmap-mcp/PATCHES.md. https://github.com/pedralcg/arcmap-mcp
+
 Imagens e dados: © Google, © Esri e parceiros, © Microsoft, CBERS/Amazônia-1 © INPE, SPOT © CNES
 (Licence Ouverte Etalab 2.0). Respeite os termos de cada provedor.
