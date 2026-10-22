@@ -5,7 +5,7 @@ backend: busca as cenas da área, recorta na resolução nativa e carrega no pai
 
 | Fonte | O que oferece |
 |---|---|
-| **Google Earth Engine** | Sentinel-2 e Landsat 1–9: composições, multibanda, índices (NDVI, NDWI, NDMI, NBR, EVI, SAVI), bandas e fórmulas digitadas |
+| **Google Earth Engine** | Sentinel-2 e Landsat 1–9: composições, multibanda, índices (NDVI, NDWI, NDMI, NBR, EVI, SAVI, NDRE, CLre, NDFI), bandas e fórmulas digitadas |
 | **CBERS / Amazônia-1 (INPE)** | As 32 coleções do STAC do INPE (CBERS-2/2B/4/4A, Amazônia-1, cubos e mosaicos) |
 | **Sentinel / Landsat** | Dados abertos, sem conta: Sentinel-2 L2A, Landsat 4–9, Sentinel-1 radar e o MDE Copernicus 30 m |
 | **SPOT 1–5 (CNES)** | Acervo 1986–2015 pelo GEODES, alinhado automaticamente à Esri World Imagery (correção medida na cena inteira) |
@@ -110,7 +110,7 @@ confirmação.
 ### Séries temporais de índices
 
 A aba **Séries temporais** (e o botão **Série temporal de índices** na seção do Earth Engine) faz a série de NDVI,
-EVI, SAVI, NDWI, NDMI ou NBR num ponto ou numa área, igual ao ArcMagery (seção 6.14 do
+EVI, SAVI, NDWI, NDMI, NBR, NDRE, CLre ou NDFI num ponto ou numa área, igual ao ArcMagery (seção 6.14 do
 [manual](MANUAL_DE_USO_E_INSTALACAO.md#614-séries-temporais-de-índices-ndvi-evi)): Earth Engine ou dados abertos sem
 conta (MODIS, Sentinel-2, Landsat e CBERS/Amazônia-1, um ou vários, com um ou vários índices na mesma faixa ou
 em faixas separadas); ponto digitado (decimal, GMS ou UTM) ou clicado no mapa; área pelos polígonos

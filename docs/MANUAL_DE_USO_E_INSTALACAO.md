@@ -231,6 +231,18 @@ cores no TOC:
 * **NDMI** (umidade da vegetação): (NIR − SWIR1) / (NIR + SWIR1)
 * **NBR** (áreas queimadas): (NIR − SWIR2) / (NIR + SWIR2)
 * **EVI** e **SAVI**: índices de vegetação com correção de atmosfera e de solo
+* **NDRE** (clorofila, borda do vermelho): (B8A − B5) / (B8A + B5). **Só Sentinel-2** (o Landsat, o MODIS e o CBERS não
+  têm as bandas B5 e B8A)
+* **CLre** (clorofila, razão na borda do vermelho; Gitelson et al., 2003): B8A / B5 − 1. Só Sentinel-2. Não é limitado a 1:
+  vegetação densa passa de 5
+* **NDFI** (degradação florestal; Souza et al., 2005): mistura espectral de cada pixel em vegetação verde (GV), vegetação
+  não fotossintética (NPV), solo, sombra e nuvem, com as frações somando 1 e nunca negativas (no Earth Engine,
+  `ee.Image.unmix`). Depois, GVs = GV / (1 − sombra) e **NDFI = (GVs − (NPV + Solo)) / (GVs + NPV + Solo)**, de −1 a 1:
+  perto de 1, floresta intacta; cai com a abertura do dossel, a madeira morta e o solo exposto. Os membros-puros são os
+  do módulo MRV (OpenMRV) para reflectância de superfície do Landsat (azul, verde, vermelho, NIR, SWIR1, SWIR2) e valem
+  para qualquer sensor que tenha essas seis bandas: **Sentinel-2, Landsat 4 a 9 e MODIS (MOD09A1)**. Sem SWIR (CBERS,
+  Landsat MSS) o NDFI não existe. Pixel de água (quase só sombra) fica sem valor. É uma estimativa: em outro bioma, ajuste
+  os membros-puros ao seu alvo
 
 **Fórmula própria:** escolha **INDICE - FORMULA MATEMATICA** na lista *Composição* e digite a expressão:
 
@@ -534,14 +546,14 @@ sensor da seção **Earth Engine**, abre a mesma aba já no Earth Engine.
 
 | Produto | Resolução e revisita | Desde | Índices |
 |---|---|---|---|
-| MODIS Terra + Aqua (MOD13Q1/MYD13Q1, o dado do SATVeg) | 250 m · 16 dias (8 dias juntando os dois) | 2000 | NDVI, EVI, SAVI, NDMI¹, NBR |
-| Sentinel-2 L2A | 10 m · 5 dias | 2015 | NDVI, EVI, SAVI, NDWI, NDMI, NBR |
-| Landsat 4 a 9 (Coleção 2, Nível 2) | 30 m · 16 dias | 1982 | NDVI, EVI, SAVI, NDWI, NDMI, NBR |
+| MODIS Terra + Aqua (MOD13Q1/MYD13Q1, o dado do SATVeg) | 250 m · 16 dias (8 dias juntando os dois) | 2000 | NDVI, EVI, SAVI, NDMI¹, NBR, NDFI¹ |
+| Sentinel-2 L2A | 10 m · 5 dias | 2015 | NDVI, EVI, SAVI, NDWI, NDMI, NBR, NDRE, CLre, NDFI |
+| Landsat 4 a 9 (Coleção 2, Nível 2) | 30 m · 16 dias | 1982 | NDVI, EVI, SAVI, NDWI, NDMI, NBR, NDFI |
 | CBERS-4/4A e Amazônia-1 WFI (reflectância de superfície, INPE) | 55-64 m · quase diária juntando os três | 2015 | NDVI, EVI, SAVI, NDWI |
 | CBERS-4/4A MUX (reflectância de superfície, INPE) | 20 m · 26-31 dias | 2015 | NDVI, EVI, SAVI, NDWI |
 
-¹ O MOD13Q1 não tem a banda SWIR de 1,6 µm: o NDMI do MODIS vem do **MOD09A1** (500 m, 8 dias).
-O CBERS não tem SWIR (sem NDMI e NBR). Abaixo dos índices, a janela avisa quando um índice escolhido não existe
+¹ O MOD13Q1 não tem a banda SWIR de 1,6 µm: o NDMI e o NDFI do MODIS vêm do **MOD09A1** (500 m, 8 dias).
+O CBERS não tem SWIR (sem NDMI, NBR e NDFI). NDRE e CLre só existem no Sentinel-2 (B5 e B8A). Abaixo dos índices, a janela avisa quando um índice escolhido não existe
 num dos produtos marcados.
 
 Nos dados abertos, o MODIS e o Landsat vêm do Microsoft Planetary Computer, o Sentinel-2 do Earth Search (AWS) e o
